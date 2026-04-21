@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="idelog.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> | Humana Psicologia</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* DEFINIÇÃO DA PALETA DE CORES RGB SOLICITADA */
+        :root {
+            --lilac: rgb(234, 225, 246);
+            /* Fundo claro/Acolhimento */
+            --dark-blue: rgb(47, 61, 126);
+            /* Texto principal/Soneidade */
+            --gold: rgb(182, 141, 64);
+            /* Destaques/Sofisticação */
+            --white: #ffffff;
+            --text-dark: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--lilac);
+            color: var(--dark-blue);
+            line-height: 1.4;
+        }
+
+        /* --- Header Fixo --- */
+        header {
+            background-color: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-agende {
+            background-color: var(--gold);
+            color: var(--white);
+            padding: 10px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s;
+        }
+
+        .nav-agende:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- HERO SECTION (Estilo Letreiro com Foto Principal rindo) --- */
+        /* --- HERO AJUSTADO PARA FUNDO BRANCO --- */
+        .hero {
+            margin: 70px;
+            margin-top: 90px;
+            /* Fade do Branco para o Lilás suave à direita */
+            background: linear-gradient(to right, #ffffff 40%, var(--lilac) 100%);
+            color: var(--dark-blue);
+            display: flex;
+            align-items: center;
+            min-height: calc(100vh - 600px);
+            padding: 0 5% 0 8%;
+            overflow: hidden;
+            position: relative;
+            border-radius: 2%;
+            box-shadow: 0 15px 40px rgba(47, 61, 126, 0.05);
+        }
+
+        
+
+        .hero-content {
+            flex: 1;
+            max-width: 720px;
+            z-index: 2;
+            padding-right: 20px;
+        }
+
+        .hero h2 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--dark-blue);
+            /* Título em Azul Escuro */
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #555;
+            /* Cinza escuro para melhor leitura no branco */
+            margin-bottom: 3rem;
+            max-width: 4810px;
+        }
+
+        /* Botão ajustado para destacar no fundo branco */
+        .btn-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--gold);
+            /* Botão em Dourado para destaque */
+            border: 2px solid var(--gold);
+            color: var(--white);
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-main:hover {
+            background-color: transparent;
+            color: var(--gold);
+        }
+
+        /* Ajuste da imagem para PNG Transparente */
+        .hero-image img {
+            max-height: 80vh;
+            width: auto;
+            object-fit: contain;
+            align-self: flex-end;
+            /* No fundo branco, uma sombra sutil ajuda a dar volume */
+            filter: drop-shadow(-10px 10px 15px rgba(0, 0, 0, 0.1));
+        }
+
+        .hero-image img {
+            max-height: 85vh;
+            width: auto;
+            object-fit: contain;
+            display: block;
+            /* Sombra para destacar do fundo */
+            filter: drop-shadow(-15px 0 20px rgba(0, 0, 0, 0.2));
+        }
+
+        /* --- Seção de Serviços com Fotos nos Cards --- */
+        .services-section {
+            background-color: var(--lilac);
+            /* Fundo Lilás Claro na seção */
+            padding: 6rem 5%;
+        }
+
+        .services-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            font-weight: 700;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            /* Corta a imagem nas bordas arredondadas */
+            box-shadow: 0 10px 30px rgba(47, 61, 126, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(47, 61, 126, 0.15);
+        }
+
+        /* Foto dentro do Card (Pessoas rindo) */
+        .card-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Preenche o espaço */
+            transition: transform 0.5s;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card h3 {
+            color: var(--dark-blue);
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-footer {
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        /* --- Localização --- */
+        .location {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 5%;
+        }
+
+        .location h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .address-text {
+            font-size: 1.2rem;
+            color: var(--lilac);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .address-text strong {
+            color: var(--white);
+            font-size: 1.4rem;
+        }
+
+        /* --- Rodapé --- */
+        footer {
+            background-color: var(--white);
+            color: var(--dark-blue);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-top: 1px solid #eee;
+        }
+
+        /* --- Responsividade (Mobile) --- */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 5rem 1rem;
+                min-height: auto;
+            }
+
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 4rem;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                justify-content: center;
+                align-self: center;
+                width: 100%;
+            }
+
+            .hero-image img {
+                max-height: 400px;
+                width: 85%;
+            }
+
+            .services-title,
+            .location h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-text">Humana Psicologia</div>
+        <a href="#" class="nav-agende">
+            <span>✉</span>
+            Agende agora!
+        </a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Saúde de qualidade, bem-estar que contagia.</h2>
+            <p>Atendimento humanizado e especializado para ajudar você a encontrar seu equilíbrio emocional.</p>
+
+            <a href="#" class="btn-main">
+                <span>✉</span>
+                Agende sua consulta
+            </a>
+        </div>
+
+        <div class="hero-image">
+            <picture>
+                <source media="(max-width: 750px)" srcset="ide.png">
+
+                <source media="(max-width: 1000px)" srcset="ide.png">
+
+                <img fetchpriority="high" src="ide.png" alt="Profissional sorrindo - Humana Psicologia"
+                    style="object-fit: cover; object-position: 50% 50%; width: 100%; height: auto; max-height: 85vh; filter: drop-shadow(-15px 0 20px rgba(0,0,0,0.2));">
+            </picture>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <h2 class="services-title">Nossas Especialidades</h2>
+
+        <div class="services-grid">
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop"
+                        alt="Adolescente rindo">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Psicoterapia</h3>
+                        <p>Acolhimento clínico focado no autoconhecimento e equilíbrio emocional.</p>
+                    </div>
+                    <div class="card-footer">Adolescentes e Adultos</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop"
+                        alt="Adulto sênior rindo">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Avaliação Neuropsicológica</h3>
+                        <p>Investigação detalhada das funções cognitivas e comportamentais.</p>
+                    </div>
+                    <div class="card-footer">Adolescentes e Adultos</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=400&auto=format&fit=crop"
+                        alt="Grupo de pessoas confiantes">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <span style="color: var(--gold); font-weight: bold; font-size: 0.8rem;">CRED. POLÍCIA
+                            FEDERAL</span>
+                        <h3>Porte de Arma</h3>
+                        <p>Avaliação psicológica técnica e profissional, realizada por psicóloga credenciada.</p>
+                    </div>
+                    <div class="card-footer">Profissional Habilitada</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=400&auto=format&fit=crop"
+                        alt="Equipe de trabalho rindo">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Recrutamento e Seleção</h3>
+                        <p>Soluções estratégicas e humanizadas para gestão de pessoas e talentos.</p>
+                    </div>
+                    <div class="card-footer">Soluções Empresariais</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="location">
+        <h2>Onde Estamos</h2>
+        <div class="address-text">
+            <p><strong>Empresarial One Way</strong></p>
+            <p>Rua Guimarães Peixoto, nº 75 — Sala 1001</p>
+            <p>Casa Amarela, Recife - PE</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Humana Psicologia | Michele Barbosa</p>
+    </footer>
+
+</body>
+
+</html>
